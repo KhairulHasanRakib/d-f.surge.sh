@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚠️Dengerous⚠️</title>
+  <link rel="icon" type="image/png" href="frame1.png" id="favicon">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* Flashing tab title effect */
+    @keyframes flashTitle {
+      0% {
+        color: red;
+      }
+
+      25% {
+        color: yellow;
+      }
+
+      50% {
+        color: lime;
+      }
+
+      75% {
+        color: cyan;
+      }
+
+      100% {
+        color: red;
+      }
+    }
+
+    .glitch {
+      font-size: 2rem;
+      color: #fff;
+      position: relative;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+
+      20% {
+        transform: translate(-2px, 2px);
+      }
+
+      40% {
+        transform: translate(-2px, -2px);
+      }
+
+      60% {
+        transform: translate(2px, 2px);
+      }
+
+      80% {
+        transform: translate(2px, -2px);
+      }
+
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Orbitron', 'Segoe UI', sans-serif;
+      background: radial-gradient(ellipse at center, #0a0f1c 0%, #000000 100%);
+      color: #00ffe1;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+      animation: flickerBody 3s infinite alternate;
+      background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F64.media.tumblr.com%2F31ad8b5ca7c81bc78c39dbb184a3e6ac%2Ftumblr_pce3rgoQR31soet89o2_540.gif);
+      object-fit: cover;
+      background-size: cover;
+    }
+
+    @keyframes flickerBody {
+      0% {
+        background-color: #0a0f1c;
+      }
+
+      100% {
+        background-color: #0c101a;
+      }
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #ff1100;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #ff0000;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      animation: neonPulse 4s infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      0% {
+        box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000;
+      }
+
+      100% {
+        box-shadow: 0 0 40px #ff1100, 0 0 60px #ff0000;
+      }
+    }
+
+    h1 {
+      font-size: clamp(1rem, 3vw, 3rem);
+      color: #ff0000;
+      text-shadow: 0 0 10px #00ffe1;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #b3f5ff;
+      margin-bottom: 20px;
+    }
+
+    .countdown h2 {
+      color: #72faff;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #timer {
+      font-size: 2rem;
+      color: #ff00e0;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff00e0;
+    }
+
+    .subscribe-form {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .subscribe-form input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 250px;
+      border: 2px solid #00ffe1;
+      border-radius: 5px;
+      background-color: transparent;
+      color: #00ffe1;
+      outline: none;
+    }
+
+    .subscribe-form input::placeholder {
+      color: #00ffe1cc;
+    }
+
+    .subscribe-form input:focus {
+      box-shadow: 0 0 10px #00ffe1;
+    }
+
+    .subscribe-form button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: linear-gradient(45deg, #00ffe1, #ff00e0);
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .subscribe-form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff00e0;
+    }
+
+    .social-icons {
+      margin-top: 25px;
+    }
+
+    .icon {
+      margin: 0 12px;
+      font-size: 1.6rem;
+      color: #00ffe1;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+      color: #ff00e0;
+    }
+
+    .security-modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(4px);
+    }
+
+    .security-modal-content {
+      background-color: #1a1a1a;
+      color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border: 1px solid #444;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px #00ffe1;
+      position: relative;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .security-modal-content::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    .security-modal-content h4 {
+      color: #ff0000;
+      margin-top: 15px;
+    }
+
+    .security-modal .close {
+      color: #aaa;
+      font-size: 1.8em;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .security-modal .close:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .subscribe-form {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    video {
+      display: none;
+    }
+
+    .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #background-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>☠️ YOU ARE HACKED ☠️</h1>
+
+    <div id="security-alert" class="security-modal">
+      <div class="security-modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p><strong>Notice:</strong> Security vulnerabilities have been detected.</p>
+        <h4>🔒 Please secure your system at your earliest convenience.</h4>
+        <p>Your privacy matters. We advise responsible resolution and appreciate your action.</p>
+        <h4>— KHR Admin</h4>
+      </div>
+      <audio id="background-audio" autoplay muted loop preload="auto">
+        <source src="audio.mp3" type="audio/mp3">
+      </audio>
+    </div>
+
+    <div class="countdown">
+      <h2>⏳ Countdown ⏳</h2>
+      <div id="timer">00:00:00</div>
+    </div>
+
+    <form class="subscribe-form" action="https://formsubmit.co/chop-hankie-curly@duck.com" method="POST">
+      <input type="email" name="email" placeholder="📧 Enter your email" required />
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <button type="submit">🔔 Notify Me</button>
+    </form>
+
+    <div class="social-icons">
+      <a href="" class="icon"><i class="fab fa-facebook-f"></i></a>
+      <a href="" class="icon"><i class="fab fa-twitter"></i></a>
+      <a href="" class="icon"><i class="fab fa-instagram"></i></a>
+      <a href="" class="icon"><i class="fab fa-linkedin-in"></i></a>
+      <a href="" class="icon"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+
+  <script>
+
+    const audio = document.getElementById('background-audio');
+
+    // Try to start muted autoplay (should work in most browsers)
+    audio.play().catch((err) => {
+      console.warn("Muted autoplay might not start immediately:", err);
+    });
+
+    // Function to unmute and ensure audio is playing
+    function unmuteAndPlayAudio() {
+      // Ensure the audio is playing
+      audio.play().then(() => {
+        audio.muted = false;
+        console.log("Audio unmuted.");
+      }).catch(err => {
+        console.error("Failed to play audio after interaction:", err);
+      });
+
+      // Remove the event listeners after first interaction
+      document.body.removeEventListener('click', unmuteAndPlayAudio);
+      document.body.removeEventListener('touchstart', unmuteAndPlayAudio);
+    }
+
+    // Add listener to body for first user interaction (click or touch)
+    document.body.addEventListener('click', unmuteAndPlayAudio);
+    document.body.addEventListener('touchstart', unmuteAndPlayAudio);
+    /*Audio and Video Script end*/
+
+    const frames = [
+      "⚠️ dEngErouS ☢️",
+      "☣️ DenGeroUs ⚠️",
+      "💀 D3ng3rOus 💣",
+      "☠️ D3ng3r0u5 🚫",
+      "🔥 Dengerous ⚡",
+      "🧨 D3NG3R 🔥",
+      "🚫 DENGEROUS ☠️"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      document.title = frames[i % frames.length];
+      i++;
+    }, 3000); // Change speed here
+
+
+    const frame = [
+      "frame1.png",
+      "frame2.png",
+      "frame3.png",
+      "frame4.png",
+      "frame5.png"
+    ];
+
+    let j = 0;
+    setInterval(() => {
+      const link = document.getElementById("favicon");
+      link.href = frame[j % frame.length];
+      j++;
+    }, 3000); // adjust speed as needed
+
+
+
+    const launchDate = new Date("June 19, 2025 12:59:00 PM").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("timer").innerHTML = "🚀 Launched!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      const pad = (n) => (n < 10 ? "0" + n : n);
+
+      document.getElementById("timer").innerHTML =
+        `${pad(days)}d : ${pad(hours)}h : ${pad(minutes)}m : ${pad(seconds)}s`;
+    }
+
+    function openModal() {
+      document.getElementById("security-alert").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("security-alert").style.display = "none";
+    }
+
+    window.onload = function () {
+      openModal();
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    };
+  </script>
+</body>
+
+</html>
